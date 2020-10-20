@@ -1,0 +1,77 @@
+#include <iostream>
+#include <cmath>
+#include "anomaly_detection.h"
+
+float var(float* x, int size) {
+    //first we will calculate the average.
+    float sum = 0;
+    float squareSum = 0;
+    for(int  i=0; i<size; i++){
+sum += x[i];
+squareSum += pow(x[i], 2);
+    }
+auto avg = sum / size; //average.
+auto variance = (squareSum/size) - pow(avg, 2);
+return variance;
+}
+
+float cov(float* x, float* y, int size) {
+float sumx = 0, sumy = 0, simplecov = 0;
+for(int  i=0; i<size; i++){
+sumx += x[i];
+sumy += y[i];
+    }
+auto avgx = sumx / size; //average calculation
+auto avgy = sumy / size; //average calculation
+for(int  i=0; i<size; i++){
+ simplecov = simplecov + (x[i] - avgx) * (y[i] - avgy);
+    }
+auto covariance = simplecov / size;
+return covariance;
+}
+
+float pearson(float* x,float* y, int size) {
+    float covariance = cov (x , y , size);
+    auto stx = sqrt(var (x, size));
+    auto sty = sqrt (var (y, size));
+    auto pearcorrelation = (covariance) / (stx * sty);
+   return pearcorrelation;
+
+}
+
+/*
+Line linear_reg(Point**points, int size) {
+float sumx1 = 0, sumy1 = 0;
+float x = 0 , y = 0;
+//Line straightLine = nullptr;
+
+
+for(int  i=0; i < size; i++){
+Point *first = new Point(points[i].x,*points[i]);
+first = points[i];
+sumx1 += first.x;
+sumy1  += first.y;
+ }
+auto avgx = sumx1/size;
+auto avgy = sumy1/size;
+float coefficient = 
+
+return straightLine;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
