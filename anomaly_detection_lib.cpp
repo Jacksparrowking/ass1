@@ -39,30 +39,50 @@ float pearson(float* x,float* y, int size) {
 
 }
 
-/*
+
 Line linear_reg(Point**points, int size) {
 float sumx1 = 0, sumy1 = 0;
 float x = 0 , y = 0;
-//Line straightLine = nullptr;
+float arrayx[size];
+float arrayy[size];
+
+
 
 
 for(int  i=0; i < size; i++){
-Point *first = new Point(points[i].x,*points[i]);
-first = points[i];
+Point first(points[i]->x, points[i]->y);
 sumx1 += first.x;
 sumy1  += first.y;
+arrayx[i] = points[i]->x;
+arrayy[i] = points[i]->y;
+
  }
 auto avgx = sumx1/size;
 auto avgy = sumy1/size;
-float coefficient = 
-
-return straightLine;
-}*/
-
-
-
+float a = cov(arrayx, arrayy, size)/var(arrayx, size);
+float b = avgy - a * avgx;
+ 
+Line line(a, b);
+return line;
 
 
+
+
+
+}
+
+
+
+
+// returns the deviation between point p and the line equation of the points
+float dev(Point p,Point** points, int size){
+	return 0;
+}
+
+// returns the deviation between point p and the line
+float dev(Point p,Line l){
+	return 0;
+}
 
 
 
